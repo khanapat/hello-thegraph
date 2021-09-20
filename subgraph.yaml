@@ -1,0 +1,26 @@
+specVersion: 0.0.1
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: Event
+    network: rinkeby
+    source:
+      address: "0xA06a3523dC6f19E74f6261cE47905a647fcC2278"
+      abi: Event
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - SendItem
+        - Start
+      abis:
+        - name: Event
+          file: ./abis/Event.json
+      eventHandlers:
+        - event: SendItem(address,address,uint256,uint8,uint256)
+          handler: handleSendItem
+        - event: Start(uint256,uint256)
+          handler: handleStart
+      file: ./src/mapping.ts
