@@ -1,6 +1,6 @@
 specVersion: 0.0.2
 schema:
-  file: ./schema.graphql
+  file: schema.graphql
 dataSources:
   - kind: ethereum/contract
     name: Event
@@ -18,10 +18,10 @@ dataSources:
         - Start
       abis:
         - name: Event
-          file: ./abis/Event.json
+          file: Event/abis/Event.json
       eventHandlers:
         - event: SendItem(uint256,address,address,uint256,uint8)
           handler: handleSendItem
         - event: Start(uint256,uint256)
           handler: handleStart
-      file: ./src/mapping.ts
+      file: Event/Event.wasm
